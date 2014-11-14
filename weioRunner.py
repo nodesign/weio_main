@@ -13,6 +13,8 @@ import subprocess
 
 import pickle
 
+import pickle
+
 # JS to PYTHON handler
 from handlers.weioJSPYHandler import WeioHandler, WeioHandlerRemote
 
@@ -133,6 +135,10 @@ class UserControl():
 
         # Clear all connetions
         weioRunnerGlobals.weioConnections.clear()
+        
+        # Empty the Queue of all messages
+        while self.qIn.empty() == False:
+            self.qIn.get()
 
         # Empty the Queue of all messages
         while self.qIn.empty() == False:
@@ -206,6 +212,11 @@ class UserControl():
             # Start it
             t.start()
             #print "STARTING PROCESS PID", t.pid
+        
+        weioRunnerGlobals.running = True
+        fRunning = open('/weio/running.p', 'wb')
+        pickle.dump(weioRunnerGlobals.running, fRunning)
+        fRunning.close()
 
         weioRunnerGlobals.running.value = True
 

@@ -11,6 +11,11 @@ import uuid
 import os
 
 
+import pickle
+
+import os
+
+
 class WeioHandler(SockJSConnection):
     def __init__(self, *args, **kwargs):
         SockJSConnection.__init__(self, *args, **kwargs)

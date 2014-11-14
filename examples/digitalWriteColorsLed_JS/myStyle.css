@@ -1,0 +1,11 @@
+html, body {
+	height: 100%;
+	background-color:gray;
+	padding:4px;
+}
+
+.col-xs-6 {
+	height: 25%;
+	cursor:pointer;
+	border-radius:20px;
+}
